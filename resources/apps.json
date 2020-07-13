@@ -26,5 +26,12 @@
         "exe": "Substance Painter.exe",
         "icon": "d:\\Projects\\GitHub\\trebuchet-launcher\\resources\\icons\\icon_Substance Painter.png",
         "tag": "Art"
+    },
+    {
+        "name": "ZBrush",
+        "directory": "C:/Program Files/Pixologic/ZBrush 2020.1.3/ZBrush.exe",
+        "exe": "ZBrush.exe",
+        "icon": "d:\\Projects\\GitHub\\trebuchet-launcher\\resources\\icons\\icon_ZBrush.png",
+        "tag": "Art"
     }
 ]

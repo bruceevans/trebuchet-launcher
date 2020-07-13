@@ -1,14 +1,11 @@
-'''
 #---------------------------------------------------------------------#
-Author: Bruce Evans, brucein3d@gmail.com
-Copyright 2020 Bruce Evans
-Trebuchet Launcher
+# Author: Bruce Evans, brucein3d@gmail.com
+# Copyright 2020 Bruce Evans
+# Trebuchet Launcher
 #---------------------------------------------------------------------#
-'''
 
-# TODO themes
-# listwidget size
-# headers
+# TODO listwidget size
+# TODO headers
 
 import os
 import sys
@@ -17,6 +14,7 @@ import psutil
 import subprocess
 import configparser
 import qdarkstyle
+import qdarkgraystyle
 import ExtractIcon
 from PySide2 import QtCore, QtGui, QtWidgets
 
@@ -138,6 +136,13 @@ class Launcher:
             self.useHeader = True
 
         self.theme = config.get('SETTINGS', 'theme')
+
+        if self.theme == 'dark':
+            self.app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
+        else:
+            light = ""
+            self.app.setStyleSheet(light)
+
 
     def _updateSettings(self, useHeader, theme):
         config = configparser.ConfigParser()
@@ -277,7 +282,8 @@ class Launcher:
 
         self.settingsMenu.setWindowTitle("Settings")
         # useHeader checkbox
-        checkBoxUseHeader = QtWidgets.QCheckBox("Use Headers")
+        # checkBoxUseHeader = QtWidgets.QCheckBox("Use Headers")
+        # checkBoxUseHeader.stateChanged.connect(lambda:self._setUseHeaders(checkBoxUseHeader.isChecked()))
 
         labelApps = QtWidgets.QLabel("Modify Apps")
         listApps = QtWidgets.QListWidget()
@@ -312,8 +318,11 @@ class Launcher:
         # theme dropdown
         labelTheme = QtWidgets.QLabel("Choose Theme: ")
         dropDownTheme = QtWidgets.QComboBox()
-        dropDownTheme.addItem("Dark")
+        dropDownTheme.addItem("Dark Blue")
+        dropDownTheme.addItem("Dark Gray")
         dropDownTheme.addItem("Light")
+
+        dropDownTheme.currentIndexChanged.connect(self._setTheme)
 
         themeLayout = QtWidgets.QHBoxLayout()
         themeLayout.addWidget(labelTheme)
@@ -334,7 +343,7 @@ class Launcher:
         btnLayout.addWidget(btnAccept)
 
         mainLayout = QtWidgets.QVBoxLayout()
-        mainLayout.addWidget(checkBoxUseHeader)
+        # mainLayout.addWidget(checkBoxUseHeader)
         mainLayout.addLayout(listLayout)
         mainLayout.addLayout(themeLayout)
         mainLayout.addLayout(btnLayout)
@@ -496,11 +505,13 @@ class Launcher:
 
     # TODO last settings
 
-    def _setUseHeaders(self):
-        pass
+    def _setUseHeaders(self, useHeader):
+        self.useHeader = useHeader
 
-    def _setTheme(self):
-        pass
+    def _setTheme(self, theme):
+        if theme == "dark":
+            # todo set theme
+            pass
 
     def _closeSettingsMenu(self):
         # update ini file
@@ -574,6 +585,7 @@ class Launcher:
                 # TODO header
                 if self.useHeader:
                     print("Adding header")
+                    # self.launcherMenu.addSection("Test Section")
                 self.launcherMenu.addSeparator()
             else:
                 action = self.launcherMenu.addAction(spacers[i].buttonName)
@@ -633,11 +645,15 @@ class Launcher:
 
     ## Settings ##
 
-    def _setTheme(self, theme):
-        if theme == "dark":
+    def _setTheme(self, themeIndex):
+        if themeIndex == 0:
             self.app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
+        elif themeIndex == 1:
+            self.app.setStyleSheet(qdarkgraystyle.load_stylesheet())
         else:
-            print("changing to light style")
+            light = ""
+            self.app.setStyleSheet(light)
+            print("changing to light")
 
     ## About ##
 
