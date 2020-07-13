@@ -1,0 +1,1 @@
+Code used to build the application using PyInstaller.

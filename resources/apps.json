@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Photoshop",
+        "directory": "C:/Program Files/Adobe/Adobe Photoshop CS6 (64 Bit)/Photoshop.exe",
+        "exe": "Photoshop.exe",
+        "icon": "d:\\Projects\\GitHub\\trebuchet-launcher\\resources\\icons\\icon_Photoshop.png",
+        "tag": "Art"
+    },
+    {
+        "name": "Substance Designer",
+        "directory": "C:/Program Files/Allegorithmic/Substance Designer/Substance Designer.exe",
+        "exe": "Substance Designer.exe",
+        "icon": "d:\\Projects\\GitHub\\trebuchet-launcher\\resources\\icons\\icon_Substance Designer.png",
+        "tag": "Art"
+    },
+    {
+        "name": "Blender",
+        "directory": "C:/Program Files/Blender Foundation/Blender 2.83/blender.exe",
+        "exe": "blender.exe",
+        "icon": "d:\\Projects\\GitHub\\trebuchet-launcher\\resources\\icons\\icon_blender.png",
+        "tag": "Art"
+    },
+    {
+        "name": "Substance Painter",
+        "directory": "C:/Program Files/Allegorithmic/Substance Painter/Substance Painter.exe",
+        "exe": "Substance Painter.exe",
+        "icon": "d:\\Projects\\GitHub\\trebuchet-launcher\\resources\\icons\\icon_Substance Painter.png",
+        "tag": "Art"
+    }
+]
