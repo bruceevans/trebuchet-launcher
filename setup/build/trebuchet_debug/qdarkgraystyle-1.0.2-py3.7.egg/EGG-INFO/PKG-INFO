@@ -1,0 +1,98 @@
+Metadata-Version: 1.1
+Name: qdarkgraystyle
+Version: 1.0.2
+Summary: A dark gray stylesheet for PySide2 applications
+Home-page: https://github.com/09ubberboy90/qdarkgraystyle
+Author: Florent Audonney
+Author-email: audoflo@hotmail.com
+License: MIT License
+Description: QDarkGray Stylesheet
+        ====================
+        
+        .. image:: https://img.shields.io/travis/mstuttgart/qdarkgraystyle/master.svg?style=flat-square
+            :target: https://travis-ci.org/mstuttgart/qdarkgraystyle
+        
+        .. image:: https://img.shields.io/pypi/v/qdarkgraystyle.svg?style=flat-square
+            :target: https://pypi.org/project/qdarkgraystyle
+        
+        .. image:: https://img.shields.io/pypi/pyversions/qdarkgraystyle.svg?style=flat-square
+            :target: https://pypi.org/project/qdarkgraystyle
+        
+        .. image:: https://img.shields.io/pypi/l/qdarkgraystyle.svg?style=flat-square
+            :target: https://github.com/mstuttgart/qdarkgraystyle/blob/master/LICENSE
+        
+        A dark gray stylesheet for PySide2 applications. This theme is a ported from https://github.com/mstuttgart/qdarkgraystyle
+        
+        Installation
+        ============
+        
+        Install **qdarkgraystyle** package using the *setup* script
+        
+        .. code:: bash
+        
+            python setup.py install
+            
+        or using *pip*
+        
+        .. code:: bash
+        
+            pip install git+https://github.com/09ubberboy90/qdarkgraystyle.git 
+            
+        Usage
+        ============
+        
+        Here is an example using PySide2.
+        
+        .. code:: python
+        
+            import sys
+            import qdarkgraystyle
+            from PySide2 import QtWidgets
+        
+            # create the application and the main window
+            app = QtWidgets.QApplication(sys.argv)
+            window = QtWidgets.QMainWindow()
+        
+            # setup stylesheet
+            app.setStyleSheet(qdarkgraystyle.load_stylesheet())
+        
+            # run
+            window.show()
+            app.exec_()
+        
+        There is an example included in the *example* folder.
+        
+        .. code:: bash
+        
+            python example/example_pyside2.py
+        
+        You can run the script without installing `qdarkgraystyle`. You only need to have
+        PySide2 installed on your system.
+        
+        Snapshots
+        =========
+        
+        Here are a few snapshots:
+        
+        * `Screenshot 1 <https://github.com/mstuttgart/qdarkgraystyle/blob/master/screenshots/screen-01.png>`_
+        * `Screenshot 2 <https://github.com/mstuttgart/qdarkgraystyle/blob/master/screenshots/screen-02.png>`_
+        * `Screenshot 3 <https://github.com/mstuttgart/qdarkgraystyle/blob/master/screenshots/screen-03.png>`_
+        
+        
+        Credits
+        =======
+        This package is totally based on `QDarkStyleSheet <https://github.com/ColinDuquesnoy/QDarkStyleSheet>`_ theme created by `Colin Duquesnoy <https://github.com/ColinDuquesnoy>`_. and ported from `qdarkgraystyle <https://github.com/mstuttgart/qdarkgraystyle>`_ by `Michell Stuttgart <https://github.com/mstuttgart>`_.
+        Copyright (C) 2019-2020 `Florent AUDONNET <https://github.com/09ubberboy90>`_
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: X11 Applications :: Qt
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks

@@ -6,6 +6,7 @@
 
 # TODO listwidget size
 # TODO headers
+# TODO .ini writing
 
 import os
 import sys
@@ -48,6 +49,8 @@ class Launcher:
 
         # init buttons
         self._initLauncherButtons()
+
+        self.mainIcon = QtGui.QIcon(self.applicationPath + "\\resources\\icons\\launcher_icon.png")
 
     def _initApp(self):
         self.app = QtWidgets.QApplication(sys.argv)
@@ -137,7 +140,7 @@ class Launcher:
 
         self.theme = config.get('SETTINGS', 'theme')
 
-        if self.theme == 'dark':
+        if self.theme == 'darkblue':
             self.app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
         else:
             light = ""
@@ -154,7 +157,7 @@ class Launcher:
             config.set('SETTINGS', 'useHeader', 'true')
 
         # TODO theme
-        config.set('SETTINGS', 'theme', 'theme')
+        config.set('SETTINGS', 'theme', theme)
 
     def _onTrayActivated(self, reason):
         if reason == self.trayIcon.Trigger:
@@ -168,6 +171,7 @@ class Launcher:
 
     def _showAddApplicationMenu(self, appPath):
         self.addApplicationMenu.setWindowTitle("Add an application")
+        self.addApplicationMenu.setWindowIcon(self.mainIcon)
 
         # Create the button with a default tag
         launchButton = LauncherButton(self.trayIcon, appPath, self.applicationPath, "Application") # temp tag
@@ -281,6 +285,7 @@ class Launcher:
         self.settingsMenu.close()
 
         self.settingsMenu.setWindowTitle("Settings")
+        self.settingsMenu.setWindowIcon(self.mainIcon)
         # useHeader checkbox
         # checkBoxUseHeader = QtWidgets.QCheckBox("Use Headers")
         # checkBoxUseHeader.stateChanged.connect(lambda:self._setUseHeaders(checkBoxUseHeader.isChecked()))
@@ -377,6 +382,7 @@ class Launcher:
 
         self.renameAppMenu = QtWidgets.QDialog()
         self.renameAppMenu.setWindowTitle("Rename an App")
+        self.renameAppMenu.setWindowIcon(self.mainIcon)
 
         labelNewName = QtWidgets.QLabel("New Name: ")
         lineEditName = QtWidgets.QLineEdit()
@@ -456,6 +462,7 @@ class Launcher:
 
         self.renameTagMenu = QtWidgets.QDialog()
         self.renameTagMenu.setWindowTitle("Rename a Tag")
+        self.renameTagMenu.setWindowIcon(self.mainIcon)
 
         labelNewName = QtWidgets.QLabel("New Name: ")
         lineEditName = QtWidgets.QLineEdit()
@@ -508,31 +515,21 @@ class Launcher:
     def _setUseHeaders(self, useHeader):
         self.useHeader = useHeader
 
-    def _setTheme(self, theme):
-        if theme == "dark":
-            # todo set theme
-            pass
-
-    def _closeSettingsMenu(self):
-        # update ini file
-        # close the menu
-        pass
-
-    ## Button specific methods ##
-
-    def _sortByName(self, appList, tags):
-        pass
-
     def _initTags(self):
         appList = self._readAppsFromJson()
 
         for app in appList:
             # check defaults
-            # TODO cleaner
-            if app.get("tag") == "Art" or app.get("tag") == "Code" or app.get("tag") == "Games" or app.get("tag") == "Media" or app.get("tag") == "Productivity" or app.get("tag") == "Web":
-                print("Found matching tag, skipping")
-            else:
+            match = False
+            for tag in self.tags:
+                if tag == app.get("tag"):
+                    match = True
+                    break
+            # add to self.tags
+            if not match:
                 self.tags.append(app.get("tag"))
+
+    ## Button specific methods ##
 
     def _initLauncherButtons(self):
 
@@ -647,10 +644,13 @@ class Launcher:
 
     def _setTheme(self, themeIndex):
         if themeIndex == 0:
+            self.theme = "darkblue"
             self.app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
         elif themeIndex == 1:
+            self.theme = "darkgray"
             self.app.setStyleSheet(qdarkgraystyle.load_stylesheet())
         else:
+            self.theme = "light"
             light = ""
             self.app.setStyleSheet(light)
             print("changing to light")
@@ -660,6 +660,8 @@ class Launcher:
     ## Run and close ##
 
     def _acceptDialog(self, dialog):
+        # update settings
+        self._updateSettings(False, self.theme)
         dialog.accept()
 
     def _cancelDialog(self, dialog):
@@ -703,7 +705,7 @@ class LauncherButton(QtWidgets.QAction):
 
     def _getIcon(self, exePath, appPath):
 
-        icon = self.trebuchetPath + "resources\\icons\\icon_" + self.buttonName + ".png"
+        icon = self.trebuchetPath + "\\resources\\icons\\icon_" + self.buttonName + ".png"
 
         if not (os.path.exists(icon)):
             # extract the exe icon and place it at the _icon path
@@ -715,10 +717,7 @@ class LauncherButton(QtWidgets.QAction):
     def launch(self):
         # launch using subprocess call
         if self.exeFile not in (p.name() for p in psutil.process_iter()):
-            try:
-                subprocess.call([self.buttonAppPath])
-            except OSError:
-                os.startfile(self.buttonAppPath)
+            os.startfile(self.buttonAppPath)
         else:
             # TODO Icon image?
             self.trayIcon.showMessage("Oops!", self.exeFile + " is already running")

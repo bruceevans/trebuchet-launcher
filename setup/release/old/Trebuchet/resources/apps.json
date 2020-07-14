@@ -1,0 +1,163 @@
+[
+    {
+        "name": "Photoshop",
+        "directory": "C:/Program Files/Adobe/Adobe Photoshop CS6 (64 Bit)/Photoshop.exe",
+        "exe": "Photoshop.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_Photoshop.png",
+        "tag": "azAdobe"
+    },
+    {
+        "name": "Illustrator",
+        "directory": "C:/Program Files/Adobe/Adobe Illustrator CS6 (64 Bit)/Support Files/Contents/Windows/Illustrator.exe",
+        "exe": "Illustrator.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_Illustrator.png",
+        "tag": "azAdobe"
+    },
+    {
+        "name": "Substance Designer",
+        "directory": "C:/Program Files/Allegorithmic/Substance Designer/Substance Designer.exe",
+        "exe": "Substance Designer.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_Substance Designer.png",
+        "tag": "Art"
+    },
+    {
+        "name": "Substance Painter",
+        "directory": "C:/Program Files/Allegorithmic/Substance Painter/Substance Painter.exe",
+        "exe": "Substance Painter.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_Substance Painter.png",
+        "tag": "Art"
+    },
+    {
+        "name": "Blender",
+        "directory": "C:/Program Files/Blender Foundation/Blender 2.83/blender.exe",
+        "exe": "blender.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_blender.png",
+        "tag": "Art"
+    },
+    {
+        "name": "Marmoset Toolbag 3",
+        "directory": "C:/Program Files/Marmoset/Toolbag 3/toolbag.exe",
+        "exe": "toolbag.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_toolbag.png",
+        "tag": "Art"
+    },
+    {
+        "name": "VS Code",
+        "directory": "C:/Program Files/Microsoft VS Code/Code.exe",
+        "exe": "Code.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_Code.png",
+        "tag": "Code"
+    },
+    {
+        "name": "ZBrush 2020",
+        "directory": "C:/Program Files/Pixologic/ZBrush 2020.1.3/ZBrush.exe",
+        "exe": "ZBrush.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_ZBrush.png",
+        "tag": "Art"
+    },
+    {
+        "name": "PureRef",
+        "directory": "C:/Program Files/PureRef/PureRef.exe",
+        "exe": "PureRef.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_PureRef.png",
+        "tag": "Art"
+    },
+    {
+        "name": "Houdini",
+        "directory": "C:/Program Files/Side Effects Software/Houdini 18.0.416/bin/houdinifx.exe",
+        "exe": "houdinifx.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_houdinifx.png",
+        "tag": "Art"
+    },
+    {
+        "name": "xNormal",
+        "directory": "C:/Program Files/xNormal/3.19.3/x64/xNormal.exe",
+        "exe": "xNormal.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_xNormal.png",
+        "tag": "Art"
+    },
+    {
+        "name": "VLC",
+        "directory": "C:/Program Files/VideoLAN/VLC/vlc.exe",
+        "exe": "vlc.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_vlc.png",
+        "tag": "Media"
+    },
+    {
+        "name": "Duet",
+        "directory": "C:/Program Files/Kairos/Duet Display/duet.exe",
+        "exe": "duet.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_duet.png",
+        "tag": "Media"
+    },
+    {
+        "name": "Unreal",
+        "directory": "C:/Program Files (x86)/Epic Games/Launcher/Engine/Binaries/Win64/EpicGamesLauncher.exe",
+        "exe": "EpicGamesLauncher.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_EpicGamesLauncher.png",
+        "tag": "Game Dev"
+    },
+    {
+        "name": "GOG Galaxy",
+        "directory": "C:/Program Files (x86)/GOG Galaxy/GalaxyClient.exe",
+        "exe": "GalaxyClient.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_GalaxyClient.png",
+        "tag": "Games"
+    },
+    {
+        "name": "Chrome",
+        "directory": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+        "exe": "chrome.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_chrome.png",
+        "tag": "Media"
+    },
+    {
+        "name": "Origin",
+        "directory": "C:/Program Files (x86)/Origin/Origin.exe",
+        "exe": "Origin.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_Origin.png",
+        "tag": "Games"
+    },
+    {
+        "name": "Steam",
+        "directory": "C:/Program Files (x86)/Steam/steam.exe",
+        "exe": "steam.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_steam.png",
+        "tag": "Games"
+    },
+    {
+        "name": "After Effects",
+        "directory": "C:/Program Files/Adobe/Adobe After Effects CS6/Support Files/AfterFX.exe",
+        "exe": "AfterFX.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_AfterFX.png",
+        "tag": "azAdobe"
+    },
+    {
+        "name": "Atom",
+        "directory": "C:/Users/bruce/AppData/Local/atom/atom.exe",
+        "exe": "atom.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_atom.png",
+        "tag": "Code"
+    },
+    {
+        "name": "GitHub Desktop",
+        "directory": "C:/Users/bruce/AppData/Local/GitHubDesktop/GitHubDesktop.exe",
+        "exe": "GitHubDesktop.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_GitHubDesktop.png",
+        "tag": "Code"
+    },
+    {
+        "name": "Hammer",
+        "directory": "D:/Games/steamapps/common/Team Fortress 2/bin/hammer.exe",
+        "exe": "hammer.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_hammer.png",
+        "tag": "Game Dev"
+    },
+    {
+        "name": "Visual Studio",
+        "directory": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/devenv.exe",
+        "exe": "devenv.exe",
+        "icon": "C:\\Program Files\\Trebuchet/resources/icons/icon_Code.png",
+        "tag": "Code"
+    }
+]
