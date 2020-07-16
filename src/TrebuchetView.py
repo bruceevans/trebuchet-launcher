@@ -14,6 +14,7 @@ import json
 import psutil
 import subprocess
 import configparser
+import webbrowser
 import qdarkstyle
 import qdarkgraystyle
 import ExtractIcon
@@ -75,6 +76,7 @@ class Launcher:
         self.actionAbout = self.trayContextMenu.addAction("About")
         self.actionAbout.setIcon(QtGui.QIcon(
             self.applicationPath + "\\resources\\icons\\icon_info.png"))
+        self.actionAbout.triggered.connect(self._showAboutMenu)
 
         self.actionClose = self.trayContextMenu.addAction("Close Launcher")
         self.actionClose.setIcon(QtGui.QIcon(
@@ -111,6 +113,10 @@ class Launcher:
         # Delete tag warning
 
         self.tagWarning = QtWidgets.QDialog()
+
+        # About menu
+        
+        self.aboutMenu = QtWidgets.QDialog()
 
     def _connectWidgets(self):
         self.trayIcon.activated.connect(self._onTrayActivated)
@@ -656,6 +662,36 @@ class Launcher:
             print("changing to light")
 
     ## About ##
+
+    def _showAboutMenu(self):
+
+        #clear menu
+        del self.aboutMenu
+
+        self.aboutMenu = QtWidgets.QDialog()
+        self.aboutMenu.setWindowTitle("About Trebuchet")
+        self.aboutMenu.setWindowIcon(self.mainIcon)
+
+        labelThanks = QtWidgets.QLabel("Thanks for supporting Trebuchet!")
+        contact = "If you have any questions, suggestions, or bugs feel free to email me."
+        email = "brucein3d@gmail.com"
+        website = "<a href='https://www.brucein3d.com/trebuchet'>www.brucein3d.com</a>"
+
+        mainLayout = QtWidgets.QVBoxLayout()
+
+        labelContact = QtWidgets.QLabel(contact)
+        labelEmail = QtWidgets.QLabel(email)
+        labelWebsite = QtWidgets.QLabel(website)
+        labelWebsite.setOpenExternalLinks(True)
+
+        mainLayout.addWidget(labelThanks)
+        mainLayout.addWidget(labelContact)
+        mainLayout.addWidget(labelEmail)
+        mainLayout.addWidget(labelWebsite)
+
+        self.aboutMenu.setLayout(mainLayout)
+
+        self.aboutMenu.show()
 
     ## Run and close ##
 
