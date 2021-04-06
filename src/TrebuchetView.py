@@ -23,10 +23,9 @@ from PySide2 import QtCore, QtGui, QtWidgets
 
 class Launcher:
 
-    def __init__(self, controller):
+    def __init__(self):
 
         # globals
-        self.controller = controller
         self.applicationPath = self._getApplicationPath()
         self.apps = self._getAppList()
         self.launchButtons = []
@@ -68,7 +67,7 @@ class Launcher:
         self.actionAddApplication = self.trayContextMenu.addAction("Add Application")
         self.actionAddApplication.setIcon(QtGui.QIcon(
             self.applicationPath + "\\resources\\icons\\icon_add.png"))
-        
+
         self.actionSettings = self.trayContextMenu.addAction("Settings")
         self.actionSettings.setIcon(QtGui.QIcon(
             self.applicationPath + "\\resources\\icons\\icon_settings.png"))
@@ -115,7 +114,7 @@ class Launcher:
         self.tagWarning = QtWidgets.QDialog()
 
         # About menu
-        
+
         self.aboutMenu = QtWidgets.QDialog()
 
     def _connectWidgets(self):
@@ -134,7 +133,7 @@ class Launcher:
             return projectDirectory
 
     def _setupSettings(self):
-        # grab settings on startup 
+        # grab settings on startup
         config = configparser.ConfigParser()
         config.read(self.applicationPath + "\\resources\\settings.ini")
 
@@ -218,7 +217,7 @@ class Launcher:
         btnLayout.addWidget(btnCancel)
 
         # addButtonAccept menu will create the final name, tag, and add it to the list
-        
+
         mainLayout.addLayout(layoutName)
         mainLayout.addLayout(layoutTag)
         mainLayout.addLayout(layoutNewTag)
@@ -268,7 +267,7 @@ class Launcher:
             self.tags.append(tag)
 
         # write to JSON
-    
+
         appList = self._readAppsFromJson()
         newEntry = {
             'name': button.buttonName,
@@ -306,7 +305,7 @@ class Launcher:
         btnRenameApp.clicked.connect(lambda : self._renameApplicationMenu(listApps))
         btnDeleteApp = QtWidgets.QPushButton("Delete App")
         btnDeleteApp.clicked.connect(lambda : self._removeApplication(listApps))
-        
+
         layoutAppButtons = QtWidgets.QHBoxLayout()
         layoutAppButtons.addWidget(btnRenameApp)
         layoutAppButtons.addWidget(btnDeleteApp)
@@ -380,7 +379,7 @@ class Launcher:
         listWidget.takeItem(listWidget.row(selection))
 
         self._initLauncherButtons()
-    
+
     def _renameApplicationMenu(self, listWidget):
 
         # clear menu
@@ -454,7 +453,7 @@ class Launcher:
             for t in self.tags:
                 if t == tag:
                     self.tags.remove(t)
-            
+
             listWidget.takeItem(listWidget.row(selection))
 
             self._initLauncherButtons()
@@ -493,7 +492,7 @@ class Launcher:
         self.renameTagMenu.setLayout(mainLayout)
 
         self.renameTagMenu.show()
-    
+
     def _renameTag(self, dialog, listWidget, newTag):
         selection = listWidget.currentItem()
         if not selection:
@@ -582,7 +581,7 @@ class Launcher:
                 button.updateName(tagLists[i][j].get("name"))
                 self.launchButtons.append(button)
                 spacers.append(button)
-        
+
         for i in range(len(spacers)):
             if spacers[i] == -1:
                 # TODO header
@@ -734,26 +733,21 @@ class LauncherButton(QtWidgets.QAction):
         return exe
 
     def _getAppName(self, exeOrApp):
-        # remove extension
-        # TODO mac
         name = exeOrApp.replace(".exe", "")
         return name
 
     def _getIcon(self, exePath, appPath):
-
         icon = self.trebuchetPath + "\\resources\\icons\\icon_" + self.buttonName + ".png"
-
         if not (os.path.exists(icon)):
             # extract the exe icon and place it at the _icon path
-            # TODO mac solution
             ExtractIcon.getIcon(exePath, icon)
-
         return icon
 
     def launch(self):
         # launch using subprocess call
         if self.exeFile not in (p.name() for p in psutil.process_iter()):
-            os.startfile(self.buttonAppPath)
+            # on a differenct thread?
+            subprocess.run(self.buttonAppPath)
         else:
             # TODO Icon image?
             self.trayIcon.showMessage("Oops!", self.exeFile + " is already running")

@@ -1,3 +1,23 @@
 [
-
+    {
+        "name": "Photoshop",
+        "directory": "C:/Program Files/Adobe/Adobe Photoshop 2020/Photoshop.exe",
+        "exe": "Photoshop.exe",
+        "icon": "D:\\Projects\\dev\\packages\\trebuchet-launcher\\\\resources\\icons\\icon_Photoshop.png",
+        "tag": "Art"
+    },
+    {
+        "name": "Dolphin",
+        "directory": "C:/Program Files/Dolphin-x64/Dolphin.exe",
+        "exe": "Dolphin.exe",
+        "icon": "d:\\Projects\\GitHub\\trebuchet-launcher\\\\resources\\icons\\icon_Dolphin.png",
+        "tag": "Games"
+    },
+    {
+        "name": "PureRef",
+        "directory": "C:/Program Files/PureRef/PureRef.exe",
+        "exe": "PureRef.exe",
+        "icon": "D:\\Projects\\dev\\packages\\trebuchet-launcher\\\\resources\\icons\\icon_PureRef.png",
+        "tag": "Art"
+    }
 ]
